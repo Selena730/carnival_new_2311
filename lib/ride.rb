@@ -27,5 +27,4 @@ class Ride
     end
     revenue
   end
-
 end
