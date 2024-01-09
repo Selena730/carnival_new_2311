@@ -10,6 +10,16 @@ describe Carnival do
 
     @visitor1 = Visitor.new('Bruce', 54, '$10')
     @visitor2 = Visitor.new('Alice', 60, '$15')
+
+    @carnival.add_ride(@ride1)
+    @carnival.add_ride(@ride2)
+    @carnival.add_ride(@ride3)
+
+    @ride1.board_rider(@visitor1)
+    @ride2.board_rider(@visitor1)
+    @ride3.board_rider(@visitor1)
+    @ride3.board_rider(@visitor2)
+    @ride3.board_rider(@visitor2)
   end
 
   it 'exists' do
@@ -20,10 +30,6 @@ describe Carnival do
   describe '#add_ride' do
     it 'adds rides to the carnival and lists the rides' do
 
-      @carnival.add_ride(@ride1)
-      @carnival.add_ride(@ride2)
-      @carnival.add_ride(@ride3)
-
       expect(@carnival.rides).to eq([@ride1, @ride2, @ride3])
     end
   end
@@ -31,15 +37,6 @@ describe Carnival do
   describe '#most_popular_ride' do
     it 'tells what the most popular ride is' do
 
-      @carnival.add_ride(@ride1)
-      @carnival.add_ride(@ride2)
-      @carnival.add_ride(@ride3)
-
-      @ride1.board_rider(@visitor1)
-      @ride2.board_rider(@visitor1)
-      @ride3.board_rider(@visitor1)
-      @ride3.board_rider(@visitor2)
-      @ride3.board_rider(@visitor2)
       popular_ride = @carnival.most_popular_ride
 
       expect(popular_ride).to eq(@ride3)
@@ -49,15 +46,6 @@ describe Carnival do
   describe '#most_profitable_ride' do
     it 'tells what the most profitable ride is' do
 
-      @carnival.add_ride(@ride1)
-      @carnival.add_ride(@ride2)
-      @carnival.add_ride(@ride3)
-
-      @ride1.board_rider(@visitor1)
-      @ride2.board_rider(@visitor1)
-      @ride3.board_rider(@visitor1)
-      @ride3.board_rider(@visitor2)
-      @ride3.board_rider(@visitor2)
       profitable_ride = @carnival.most_profitable_ride
 
       expect(profitable_ride).to eq(@ride3)
@@ -66,15 +54,6 @@ describe Carnival do
 
   describe '#total_revenue' do
     it 'returns the total revenue from all rides' do
-      @carnival.add_ride(@ride1)
-      @carnival.add_ride(@ride2)
-      @carnival.add_ride(@ride3)
-
-      @ride1.board_rider(@visitor1)
-      @ride2.board_rider(@visitor1)
-      @ride3.board_rider(@visitor1)
-      @ride3.board_rider(@visitor2)
-      @ride3.board_rider(@visitor2)
 
       total_revenue = @ride1.total_revenue + @ride2.total_revenue + @ride3.total_revenue
       expect(@carnival.total_revenue).to eq(total_revenue)
