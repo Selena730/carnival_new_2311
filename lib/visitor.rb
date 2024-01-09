@@ -13,5 +13,7 @@ class Visitor
   end
 
 
-
+  def tall_enough?(certain_height)
+    @height >= certain_height
+  end
 end
