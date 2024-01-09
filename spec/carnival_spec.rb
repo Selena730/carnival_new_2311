@@ -17,5 +17,14 @@ describe Carnival do
     expect(@carnival). to be_instance_of(Carnival)
   end
 
+  describe '#add_ride' do
+    it 'adds rides to the carnival and lists the rides' do
 
+      @carnival.add_ride(@ride1)
+      @carnival.add_ride(@ride2)
+      @carnival.add_ride(@ride3)
+
+      expect(@carnival.rides).to eq(@ride1, @ride2, @ride3)
+    end
+  end
 end
