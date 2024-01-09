@@ -10,7 +10,22 @@ class Ride
     @min_height = attributes[:min_height]
     @admission_fee = attributes[:admission_fee]
     @excitement = attributes[:excitement]
-    @rider_log = {}
+    @rider_log = Hash.new(0)
+  end
+
+  def board_rider(visitor)
+    if visitor.height >= @min_height && visitor.spending_money >= @admission_fee
+      visitor.minus_money(@admission_fee)
+      @rider_log[visitor] += 1
+    end
+  end
+
+  def total_revenue
+    revenue = 0
+    @rider_log.each do |visitor, rides|
+      revenue += rides * @admission_fee
+    end
+    revenue
   end
 
 end
