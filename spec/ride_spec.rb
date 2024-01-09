@@ -2,14 +2,11 @@ require 'spec_helper'
 require 'rspec'
 
 describe Ride do
-  carousel = "Carousel"
-  ferris_wheel = "Ferris Wheel"
-  coaster = "Roller Coaster"
 
   before :each do
-    @ride1 = Ride.new({ name: carousel, min_height: 24, admission_fee: 1, excitement: :gentle })
-    @ride2 = Ride.new({ name: ferris_wheel, min_height: 36, admission_fee: 5, excitement: :gentle })
-    @ride3 = Ride.new({ name: coaster, min_height: 54, admission_fee: 2, excitement: :thrilling })
+    @ride1 = Ride.new({ name: "Carousel", min_height: 24, admission_fee: 1, excitement: :gentle })
+    @ride2 = Ride.new({ name: "Ferris Wheel", min_height: 36, admission_fee: 5, excitement: :gentle })
+    @ride3 = Ride.new({ name: "Roller Coaster", min_height: 54, admission_fee: 2, excitement: :thrilling })
 
     @visitor1 = Visitor.new('Bruce', 54, '$10')
     @visitor2 = Visitor.new('Tucker', 36, '$5')
@@ -24,10 +21,10 @@ describe Ride do
   describe '#initialize' do
     it 'has attributes' do
 
-      expect(@ride1[name]).to eq(carousel)
-      expect(@ride1[min_height]).to eq(24)
-      expect(@ride1[addmission_fee]).to eq(1)
-      expect(@ride1[excitement]).to eq(:gentle)
+      expect(@ride1.name).to eq("Carousel")
+      expect(@ride1.min_height).to eq(24)
+      expect(@ride1.admission_fee).to eq(1)
+      expect(@ride1.excitement).to eq(:gentle)
     end
   end
 end
