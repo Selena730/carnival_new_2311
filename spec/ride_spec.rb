@@ -41,4 +41,11 @@ describe Ride do
     end
   end
 
+  describe '#board_rider' do
+    it 'allow visitor board a ride' do
+      @ride3.board_rider(@visitor3)
+
+      expect(@ride3.rider_log[@visitor3]).to eq(1)
+    end
+  end
 end
