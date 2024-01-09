@@ -27,4 +27,18 @@ describe Ride do
       expect(@ride1.excitement).to eq(:gentle)
     end
   end
+
+  describe '#total_revenue' do
+    it 'calculates total revenue from admission fees' do
+
+      expect(@ride1.total_revenue).to eq(0)
+
+      @ride1.board_rider(@visitor1)
+      @ride1.board_rider(@visitor2)
+      @ride1.board_rider(@visitor1)
+
+      expect(@ride1.total_revenue).to eq(3)
+    end
+  end
+
 end
