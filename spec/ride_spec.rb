@@ -48,4 +48,13 @@ describe Ride do
       expect(@ride3.rider_log[@visitor3]).to eq(1)
     end
   end
+
+  describe 'spending_money' do
+    it'takes away from admission fee for visitor ' do
+
+    @ride3.board_rider(@visitor3)
+
+    expect(@visitor3.spending_money).to eq(13)
+    end
+  end
 end
