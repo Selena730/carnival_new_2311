@@ -24,7 +24,25 @@ describe Carnival do
       @carnival.add_ride(@ride2)
       @carnival.add_ride(@ride3)
 
-      expect(@carnival.rides).to eq(@ride1, @ride2, @ride3)
+      expect(@carnival.rides).to eq([@ride1, @ride2, @ride3])
+    end
+  end
+
+  describe '#most_popular_ride' do
+    it 'tells what the most popular ride is' do
+
+      @carnival.add_ride(@ride1)
+      @carnival.add_ride(@ride2)
+      @carnival.add_ride(@ride3)
+
+      @ride1.board_rider(@visitor1)
+      @ride2.board_rider(@visitor1)
+      @ride3.board_rider(@visitor1)
+      @ride3.board_rider(@visitor2)
+      @ride3.board_rider(@visitor2)
+      popular_ride = @carnival.most_popular_ride
+
+      expect(popular_ride).to eq(@ride3)
     end
   end
 end
